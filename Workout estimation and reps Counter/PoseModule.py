@@ -5,17 +5,21 @@ import math
 
 class PoseDetector():
     
-    def __init__(self,mode = False, upBody = False, smooth = True, detectionCon = 0.5, trackCon = 0.5):
+    def __init__(self,mode = False,complexity = 1,smooth = True,segmentation = False,
+                 smooth_segmentation = True, detectionCon = 0.5, trackCon = 0.5):
         
         self.mode = mode
-        self.upBody = upBody
         self.smooth = smooth
+        self.complexity = complexity
+        self.segmentation = segmentation
+        self.smooth_segmentation = smooth_segmentation
         self.detectionCon = detectionCon
         self.trackCon = trackCon
         
         self.mpDraw = mp.solutions.drawing_utils
         self.mpPose = mp.solutions.pose
-        self.pose = self.mpPose.Pose(self.mode, self.upBody, self.smooth, self.detectionCon,self.trackCon)
+        self.pose = self.mpPose.Pose(self.mode,self.smooth,self.complexity,
+                                     self.segmentation,self.smooth_segmentation,self.detectionCon,self.trackCon)
         
         
     def findPose(self, img, draw = True):
@@ -76,9 +80,9 @@ class PoseDetector():
     
     
 def main():
-    cap = cv2.VideoCapture("video-3.mp4")
+    cap = cv2.VideoCapture("KneeBendVideo.mp4")
     pTime = 0
-    detector = PoseDetector(0.7)
+    detector = PoseDetector(0.6)
     
     while True:
         success, img = cap.read()
