@@ -1,0 +1,31 @@
+Task : Knee Bend Reps Count
+
+Task Overview:
+
+* Using mediapipe library I first created a PoseModule for estimating the pose
+* using PoseModule can calculate the angle , find the pose, draw the pose connections
+* Then set the frame size and format for saving the output result
+* I categorize the knee bend into two parts
+* set the angle for counting the total reps and set different angle for perfectly done Knee Bending reps
+* for perfect reps i set the angle between 80 to 170 degree
+* for total reps angle value is between 110 to 170
+* with these predefined angle value calculated the percentage for counting a reps
+* Using Time Module calculated the times taken for a single reps
+* set the duration for 8 seconds
+* when a person fails to stay in holding position till 8 sec.it shows Feedback message - “Keep your knee bent” in screen.
+
+* for the timer I set the angle value at 140. when the angle value is lesser than 140 timer will start
+* after Bending knee for few seconds when leg come to the straight position and if the angle is bigger the 145 then the timer will stop
+
+* For this i set the leg direction at 0
+* Bend dir = 0 means when the leg is at staright position
+* Bend dir = 1 means when the leg is at bending position 
+* similarly i used dir = 0 for counting the reps
+* dir = 0 when the leg is at straight position
+* dir = 1 when the leg is at bending position
+
+* when the leg start to bend and cross the predefined angle value then the direction will become 1 from 0 and increse the count value 0.5
+
+* when the leg came to staright position then the direction will become 0 from 1 and increse the count value for 0.5 and combinely makes a complete Reps.
+* Used button "r" for reset the timer
+* Used button "q" for quit
