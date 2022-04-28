@@ -1,1 +1,1 @@
-This project is based on OpenCV.
+# This project is based on OpenCV and Python.
